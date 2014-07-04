@@ -15,6 +15,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -981,13 +982,12 @@ public class JmDNSImpl extends JmDNS implements DNSStatefulObject, DNSTaskStarte
         info.setDns(this);
 
         this.registerServiceType(info.getTypeWithSubtype());
-
         // bind the service to this address
         info.setServer(_localHost.getName());
         info.addAddress(_localHost.getInet4Address());
         info.addAddress(_localHost.getInet6Address());
-
-        this.waitForAnnounced(DNSConstants.SERVICE_INFO_TIMEOUT);
+        // TODO: is removing this safe?
+        //this.waitForAnnounced(DNSConstants.SERVICE_INFO_TIMEOUT);
 
         this.makeServiceNameUnique(info);
         while (_services.putIfAbsent(info.getKey(), info) != null) {
@@ -995,13 +995,15 @@ public class JmDNSImpl extends JmDNS implements DNSStatefulObject, DNSTaskStarte
         }
 
         this.startProber();
-        info.waitForAnnounced(DNSConstants.SERVICE_INFO_TIMEOUT);
+        
+        // TODO: is removing this safe?
+        //info.waitForAnnounced(DNSConstants.SERVICE_INFO_TIMEOUT);
 
         if (logger.isLoggable(Level.FINE)) {
             logger.fine("registerService() JmDNS registered service as " + info);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */

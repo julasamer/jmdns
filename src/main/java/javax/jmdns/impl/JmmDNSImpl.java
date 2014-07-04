@@ -475,6 +475,8 @@ public class JmmDNSImpl implements JmmDNS, NetworkTopologyListener, ServiceInfoI
     @Override
     public void inetAddressAdded(NetworkTopologyEvent event) {
         InetAddress address = event.getInetAddress();
+        System.out.println("added: "+address);
+
         try {
             synchronized (this) {
                 if (!_knownMDNS.containsKey(address)) {
