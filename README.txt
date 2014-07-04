@@ -18,6 +18,10 @@
 //This library is now licensed under the Apache License Version 2.0  Please 
 //see the file NOTICE.txt.  
 
+** Notes about this fork 
+This fork includes some potentially unsafe hacks to make registration & discovery faster. At this time, it is probably not advisable to use this in your project. 
+Original README starts here
+
 
 Arthur van Hoff
 avh@strangeberry.com
