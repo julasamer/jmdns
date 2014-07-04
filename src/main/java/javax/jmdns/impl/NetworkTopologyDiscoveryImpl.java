@@ -58,7 +58,6 @@ public class NetworkTopologyDiscoveryImpl implements NetworkTopologyDiscovery {
     public InetAddress[] getInetAddresses() {
         Set<InetAddress> result = new HashSet<InetAddress>();
         try {
-
             for (Enumeration<NetworkInterface> nifs = NetworkInterface.getNetworkInterfaces(); nifs.hasMoreElements();) {
                 NetworkInterface nif = nifs.nextElement();
                 for (Enumeration<InetAddress> iaenum = nif.getInetAddresses(); iaenum.hasMoreElements();) {
